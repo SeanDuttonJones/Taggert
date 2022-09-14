@@ -26,6 +26,9 @@ class TagIndex:
 
     def find(self, tag):
         if(tag not in self.index):
-            return None
+            return []
 
         return self.index[tag]
+
+    def listTags(self):
+        return list(self.index.keys())
