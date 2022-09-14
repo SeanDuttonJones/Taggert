@@ -1,6 +1,6 @@
 class TagIndex:
 
-    def __init__(self) -> None:
+    def __init__(self):
         self.index = {}
         self.inverse_index = {}
 

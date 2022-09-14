@@ -1,21 +1,10 @@
-import click
+class Taggert():
+    
+    def __init__(self):
+        pass
 
-from TagIndex import TagIndex
+    def search(self, tags):
+        print("Search")
 
-@click.group()
-def cli():
-    pass
-
-@cli.command()
-@click.argument("tags", nargs=-1)
-def search(tags):
-    print("Search")
-    pass
-
-@cli.command()
-def list():
-    print("List")
-    pass
-
-if __name__ == "__main__":
-    cli()
+    def list(self):
+        print("List")
