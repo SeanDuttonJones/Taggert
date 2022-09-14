@@ -1,7 +1,5 @@
 import ast
 
-__tags__ = ["jack", "jim"]
-
 class TagExtractor:
 
     def __init__(self):

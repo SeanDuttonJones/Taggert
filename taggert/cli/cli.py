@@ -1,6 +1,8 @@
 from taggert import Taggert
 import click
 
+import os
+
 taggert = Taggert()
 
 @click.group()
@@ -27,6 +29,10 @@ def list():
             click.echo("\t" + tag)
     else: 
         click.echo("No tags found.")
+
+@cli.command()
+def lstat():
+    print(os.lstat("."))
 
 if __name__ == "__main__":
     cli()

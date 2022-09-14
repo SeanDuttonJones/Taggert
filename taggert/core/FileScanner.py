@@ -1,8 +1,6 @@
 import ctypes
 import os
 
-__tags__ = ["sean", "jack"]
-
 class FileScanner:
 
     def __init__(self, root_dir):

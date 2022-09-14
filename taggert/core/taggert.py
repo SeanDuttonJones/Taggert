@@ -6,7 +6,6 @@ class Taggert():
     
     def __init__(self):
         self.tag_index = TagIndex()
-        pass
 
     def index(self):
         file_scanner = FileScanner("/Users/seanduttonjones/Documents/Work/Development/Python/Taggert/")
