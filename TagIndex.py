@@ -4,7 +4,7 @@ class TagIndex:
         self.index = {}
         self.inverse_index = {}
 
-    def add_value(self, tag, value):
+    def add(self, tag, value):
         if(tag not in self.index):
             self.index[tag] = []
 
@@ -15,7 +15,7 @@ class TagIndex:
         
         self.inverse_index[value].append(tag)
 
-    def remove_value(self, value):
+    def remove(self, value):
         tags = self.inverse_index.pop(value, None)
 
         for tag in tags:
