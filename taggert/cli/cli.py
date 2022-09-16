@@ -1,4 +1,4 @@
-from taggert import Taggert
+from taggert.core.taggert import Taggert
 import click
 
 import os
@@ -33,6 +33,3 @@ def list():
 @cli.command()
 def lstat():
     print(os.lstat("."))
-
-if __name__ == "__main__":
-    cli()

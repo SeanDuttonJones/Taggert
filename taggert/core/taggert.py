@@ -1,6 +1,6 @@
-from FileScanner import FileScanner
-from TagExtractor import TagExtractor
-from TagIndex import TagIndex
+from taggert.core.filescanner import FileScanner
+from taggert.core.tagextractor import TagExtractor
+from taggert.core.tagindex import TagIndex
 
 class Taggert():
     
