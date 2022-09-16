@@ -1,4 +1,6 @@
 from taggert.core.taggert import Taggert
+from taggert.diff.filetree import FileTree
+
 import click
 
 import os
@@ -33,3 +35,22 @@ def list():
 @cli.command()
 def lstat():
     print(os.lstat("."))
+
+@cli.command()
+def tree():
+    cwd = os.getcwd() + "/taggert"
+
+    file_tree = FileTree(cwd)
+    file_tree.build()
+    file_tree.print()
+    file_tree.save(cwd, "tree.json")
+    
+    file_tree.load(cwd + "/tree.json")
+
+    print("FILES")
+    for file in file_tree.list_files():
+        print(file.get_path())
+
+    print("\nDIRECTORIES")
+    for dir in file_tree.list_directories():
+        print(dir.get_path())
