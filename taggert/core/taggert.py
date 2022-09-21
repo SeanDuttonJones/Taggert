@@ -11,24 +11,9 @@ class Taggert:
         self.tag_index = TagIndex()
 
     def index(self):
-        # file_scanner = FileScanner(os.getcwd())
-        # tag_extractor = TagExtractor()
-
-        # python_files = file_scanner.scan([".py"])
-
-        # for file in python_files:
-        #     with open(file, "r") as f:
-        #         code = f.read()
-        #         tags = tag_extractor.parse(code)
-                
-        #         if(tags == None):
-        #             continue
-
-        #         for tag in tags:
-        #             self.tag_index.add(tag.lower(), file)
-
         tag_indexor = CachedTagIndexor(self.tag_index)
-        tag_indexor.index(os.getcwd())
+        # tag_indexor.clear_cache()
+        tag_indexor.index(os.path.join(os.getcwd(), "taggert"))
 
     def search(self, tag):
         self.index()

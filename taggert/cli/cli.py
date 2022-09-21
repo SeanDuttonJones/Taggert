@@ -1,9 +1,8 @@
 from taggert.core.taggert import Taggert
 from taggert.diff.filetree import FileTree
 
-import taggert as tggt
-
 import click
+import appdirs
 
 import os
 
@@ -59,6 +58,8 @@ def tree():
 
 @cli.command()
 def cache():
-    package_install_loc = os.path.dirname(tggt.__file__)
-    os.mkdir(package_install_loc + "/__cache__")
-    print(package_install_loc)
+    # package_install_loc = os.path.dirname(tggt.__file__)
+    # os.mkdir(package_install_loc + "/__cache__")
+    # print(package_install_loc)
+    cache_dir = appdirs.user_cache_dir("Taggert", "Taggert")
+    click.echo(cache_dir)

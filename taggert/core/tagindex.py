@@ -18,11 +18,12 @@ class TagIndex:
     def remove(self, value):
         tags = self.inverse_index.pop(value, None)
 
-        for tag in tags:
-            self.index[tag].remove(value)
-            
-            if(len(self.index[tag]) == 0):
-                self.index.pop(tag, None)
+        if(tags):
+            for tag in tags:
+                self.index[tag].remove(value)
+                
+                if(len(self.index[tag]) == 0):
+                    self.index.pop(tag, None)
 
     def find(self, tag):
         if(tag not in self.index):

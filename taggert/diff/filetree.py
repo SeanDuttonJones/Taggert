@@ -83,15 +83,17 @@ class FileTree:
         self.root_node = self._load(tree_dict)
         return self.root_node
 
-    def _list_file_nodes(self, root, file_nodes):
-        if(not root.is_directory()):
-            file_nodes.append(root)
-
-        for child in root.get_children():
-            self._list_file_nodes(child, file_nodes)
-
-    def list_files(self):
+    def list_file_nodes(self):
         return self.root_node.list_nodes(lambda x: not x.is_directory())
 
-    def list_directories(self):
+    def list_directory_nodes(self):
         return self.root_node.list_nodes(lambda x: x.is_directory())
+
+    def list_nodes(self, filter):
+        return self.root_node.list_nodes(filter)
+
+    def get_root(self):
+        if(self.root_node):
+            return self.root_node
+
+        return None
