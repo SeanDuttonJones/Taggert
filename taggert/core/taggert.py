@@ -1,28 +1,34 @@
 from taggert.core.filescanner import FileScanner
 from taggert.core.tagextractor import TagExtractor
 from taggert.core.tagindex import TagIndex
+from taggert.core.cachedtagindexor import CachedTagIndexor
 
-class Taggert():
+import os
+
+class Taggert:
     
     def __init__(self):
         self.tag_index = TagIndex()
 
     def index(self):
-        file_scanner = FileScanner("/Users/seanduttonjones/Documents/Work/Development/Python/Taggert/")
-        tag_extractor = TagExtractor()
+        # file_scanner = FileScanner(os.getcwd())
+        # tag_extractor = TagExtractor()
 
-        python_files = file_scanner.scan([".py"])
+        # python_files = file_scanner.scan([".py"])
 
-        for file in python_files:
-            with open(file, "r") as f:
-                code = f.read()
-                tags = tag_extractor.parse(code)
+        # for file in python_files:
+        #     with open(file, "r") as f:
+        #         code = f.read()
+        #         tags = tag_extractor.parse(code)
                 
-                if(tags == None):
-                    continue
+        #         if(tags == None):
+        #             continue
 
-                for tag in tags:
-                    self.tag_index.add(tag.lower(), file)
+        #         for tag in tags:
+        #             self.tag_index.add(tag.lower(), file)
+
+        tag_indexor = CachedTagIndexor(self.tag_index)
+        tag_indexor.index(os.getcwd())
 
     def search(self, tag):
         self.index()

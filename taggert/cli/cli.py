@@ -1,6 +1,8 @@
 from taggert.core.taggert import Taggert
 from taggert.diff.filetree import FileTree
 
+import taggert as tggt
+
 import click
 
 import os
@@ -54,3 +56,9 @@ def tree():
     print("\nDIRECTORIES")
     for dir in file_tree.list_directories():
         print(dir.get_path())
+
+@cli.command()
+def cache():
+    package_install_loc = os.path.dirname(tggt.__file__)
+    os.mkdir(package_install_loc + "/__cache__")
+    print(package_install_loc)
