@@ -1,5 +1,7 @@
 from taggert.core.taggert import Taggert
 from taggert.diff.filetree import FileTree
+from taggert.core.file import File
+from taggert.core.filefilters.pythonfilefilter import PythonFileFilter
 
 import click
 import appdirs
@@ -61,5 +63,22 @@ def cache():
     # package_install_loc = os.path.dirname(tggt.__file__)
     # os.mkdir(package_install_loc + "/__cache__")
     # print(package_install_loc)
-    cache_dir = appdirs.user_cache_dir("Taggert", "Taggert")
-    click.echo(cache_dir)
+    # cache_dir = appdirs.user_cache_dir("Taggert", "Taggert")
+    # click.echo(cache_dir)
+    file = File("C:\\Users\\Sean\\Documents\\Development\\Python\\Taggert\\taggert\\core")
+    python_file_filter = PythonFileFilter()
+    print("Name:", file.get_name())
+    print("Extension:", file.get_extension())
+    print("Parent:", file.get_parent())
+    print("Path:", file.get_path())
+    print("Size:", file.get_size())
+    print("Exists?:", file.exists())
+    print("Hash:", file.hash())
+    print("Directory?:", file.is_directory())
+    print("File?:", file.is_file())
+    print("Hidden?:", file.is_hidden())
+    print("Last modified:", file.last_modified())
+    print("Created:", file.created())
+    print("List:", file.list(file_filter=python_file_filter))
+    print("Files:", file.list_files())
+    print("Directories:", file.list_directories())
